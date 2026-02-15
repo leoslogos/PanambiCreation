@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Amigurumis con Amor | Tienda</title>
+  <meta name="description" content="Amigurumis hechos a mano: personajes, regalos personalizados y ternura en crochet. Encargos por pedido." />
+  <meta name="theme-color" content="#ff2fa6" />
+
+  <style>
+    :root{
+      --bg1:#ff2fa6;
+      --bg2:#ffb703;
+      --bg3:#00d4ff;
+      --dark:#0b1020;
+      --card:#0f1733;
+      --text:#f7f8ff;
+      --muted:rgba(247,248,255,.78);
+      --stroke:rgba(255,255,255,.16);
+      --good:#2ee59d;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(255,47,166,.45), transparent 55%),
+                  radial-gradient(900px 500px at 110% 10%, rgba(0,212,255,.40), transparent 60%),
+                  radial-gradient(900px 700px at 40% 120%, rgba(255,183,3,.40), transparent 55%),
+                  linear-gradient(180deg, #070a14, #0b1020 55%, #070a14);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .container{width:min(1100px, 92vw); margin:0 auto}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,20,.55);
+      border-bottom: 1px solid var(--stroke);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:900; letter-spacing:.2px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:12px;
+      background: conic-gradient(from 180deg, var(--bg1), var(--bg2), var(--bg3), var(--bg1));
+      box-shadow: 0 10px 25px rgba(255,47,166,.25);
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .navlinks{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .pill{
+      text-decoration:none;
+      padding:9px 12px;
+      border:1px solid var(--stroke);
+      border-radius: 999px;
+      color:var(--muted);
+      background: rgba(255,255,255,.04);
+      transition: transform .12s ease, background .12s ease, color .12s ease;
+      font-weight:700;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.09); color:var(--text)}
+    .cta{
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:900;
+      border:0;
+      background: linear-gradient(90deg, var(--bg1), var(--bg2));
+      color:#12061a;
+      box-shadow: 0 16px 35px rgba(255,47,166,.20);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+    @media (max-width: 900px){
+      .heroGrid{grid-template-columns: 1fr; }
+    }
+    .heroCard{
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(1200px 600px at 0% 0%, rgba(255,47,166,.25), transparent 60%),
+        radial-gradient(900px 500px at 100% 0%, rgba(0,212,255,.22), transparent 55%),
+        rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      position:relative;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color:var(--muted);
+      font-weight:800;
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    .spark{
+      width:10px; height:10px; border-radius:4px;
+      background: linear-gradient(90deg, var(--bg2), var(--bg1));
+      box-shadow: 0 0 0 6px rgba(255,183,3,.12);
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height:1.05;
+      letter-spacing:-.7px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height:1.55;
+      max-width: 60ch;
+    }
+
+    .heroActions{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:900;
+      color: var(--text);
+      transition: transform .12s ease, background .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .btnPrimary{
+      border:0;
+      color:#140715;
+      background: linear-gradient(90deg, var(--bg2), var(--bg1));
+      box-shadow: 0 18px 38px rgba(255,47,166,.18);
+    }
+    .small{
+      font-size: 13px; color: rgba(255,255,255,.75);
+      margin-top: 12px;
+    }
+
+    /* Right hero box */
+    .sideCard{
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .sideCard:before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width:260px; height:260px;
+      background: conic-gradient(from 200deg, rgba(255,47,166,.55), rgba(255,183,3,.55), rgba(0,212,255,.55), rgba(255,47,166,.55));
+      filter: blur(20px);
+      opacity:.35;
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .preview{
+      border:1px dashed rgba(255,255,255,.25);
+      border-radius: 16px;
+      padding: 16px;
+      background: rgba(11,16,32,.55);
+      position:relative;
+    }
+    .previewTitle{font-weight:1000; letter-spacing:.2px; margin:0 0 6px}
+    .previewText{margin:0; color:var(--muted); line-height:1.45}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.82);
+      font-weight:800;
+    }
+
+    /* Sections */
+    section{padding: 22px 0}
+    .sectionTitle{
+      font-size: 22px;
+      margin:0 0 12px;
+      letter-spacing:-.2px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .grid{grid-template-columns: 1fr;}
+    }
+    .card{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.28);
+    }
+    .card h3{margin:0 0 8px; font-size: 16px}
+    .card p{margin:0; color: var(--muted); line-height:1.5}
+    .icon{
+      width:40px; height:40px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(255,183,3,.18), rgba(255,47,166,.18));
+      border:1px solid rgba(255,255,255,.16);
+      margin-bottom: 10px;
+      font-weight:1000;
+    }
+
+    /* Catalog */
+    .catalog{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .catalog{grid-template-columns: 1fr;}
+    }
+    .product{
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      box-shadow: 0 12px 34px rgba(0,0,0,.30);
+    }
+    .thumb{
+      height: 170px;
+      background:
+        radial-gradient(1000px 350px at 10% 20%, rgba(255,47,166,.45), transparent 55%),
+        radial-gradient(900px 350px at 90% 20%, rgba(0,212,255,.35), transparent 60%),
+        linear-gradient(135deg, rgba(255,183,3,.25), rgba(11,16,32,.05));
+      position:relative;
+    }
+    .thumb span{
+      position:absolute; left:14px; bottom:14px;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(11,16,32,.55);
+      border: 1px solid rgba(255,255,255,.18);
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .pbody{padding: 14px}
+    .priceRow{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:10px}
+    .price{
+      font-weight:1000;
+      background: linear-gradient(90deg, var(--bg2), var(--bg1));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
+      font-size: 18px;
+    }
+    .buy{
+      text-decoration:none;
+      font-weight:1000;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(46,229,157,.16);
+      border: 1px solid rgba(46,229,157,.45);
+      color: #eafff6;
+      transition: transform .12s ease, background .12s ease;
+    }
+    .buy:hover{transform: translateY(-1px); background: rgba(46,229,157,.22)}
+    .note{
+      font-size: 12px;
+      color: rgba(255,255,255,.70);
+      margin-top:10px;
+    }
+
+    /* Contact */
+    .contactBox{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 900px){
+      .contactBox{grid-template-columns: 1fr;}
+    }
+    label{display:block; font-weight:900; margin: 10px 0 6px}
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(11,16,32,.55);
+      color: var(--text);
+      outline: none;
+    }
+    textarea{min-height: 120px; resize: vertical}
+    .send{
+      margin-top: 10px;
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:0;
+      background: linear-gradient(90deg, var(--bg1), var(--bg3));
+      color:#12061a;
+      font-weight:1000;
+      cursor:pointer;
+    }
+
+    footer{
+      padding: 26px 0 34px;
+      border-top: 1px solid var(--stroke);
+      color: rgba(255,255,255,.70);
+      background: rgba(7,10,20,.45);
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .miniLinks{display:flex; gap:10px; flex-wrap:wrap}
+    .miniLinks a{color: rgba(255,255,255,.72)}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Amigurumis con Amor</div>
+      </a>
+
+      <nav class="navlinks" aria-label="Navegación">
+        <a class="pill" href="#catalogo">Catálogo</a>
+        <a class="pill" href="#como">Cómo funciona</a>
+        <a class="pill" href="#testimonios">Opiniones</a>
+        <a class="pill" href="#contacto">Contacto</a>
+        <a class="cta" href="#contacto">Hacer pedido</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="container">
+    <section class="hero">
+      <div class="heroGrid">
+        <div class="heroCard">
+          <div class="badge"><span class="spark" aria-hidden="true"></span> Hechos a mano • Personalizables • Súper tiernos</div>
+
+          <h1>Amigurumis que alegran el día 💖</h1>
+          <p class="lead">
+            Dale vida a tu personaje favorito en crochet: regalos únicos, detalles para bebés,
+            decoración y sorpresas para quien más quieres. <strong>Hecho con amor, puntada por puntada</strong>.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn btnPrimary" href="#catalogo">Ver catálogo</a>
+            <a class="btn" href="#contacto">Pedir uno personalizado</a>
+            <a class="btn" href="#como">Cómo comprar</a>
+          </div>
+
+          <p class="small">
+            ✨ Entregas y encargos por pedido. Escríbeme tu idea y te doy opciones de tamaño, colores y precio.
+          </p>
+        </div>
+
+        <aside class="sideCard">
+          <div class="preview">
+            <p class="previewTitle">🎁 Promo de la semana</p>
+            <p class="previewText">2 amigurumis mini = <strong>descuento especial</strong>. Ideal para regalos.</p>
+          </div>
+
+          <div class="preview">
+            <p class="previewTitle">🧶 Materiales</p>
+            <p class="previewText">Hilo suave, relleno hipoalergénico y terminaciones prolijas.</p>
+          </div>
+
+          <div class="chips" aria-label="Etiquetas">
+            <span class="chip">Personalizados</span>
+            <span class="chip">Llaveros</span>
+            <span class="chip">Bebés</span>
+            <span class="chip">Anime</span>
+            <span class="chip">Mascotas</span>
+            <span class="chip">Regalos</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="como">
+      <h2 class="sectionTitle">Cómo funciona</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>Elige o cuéntame tu idea</h3>
+          <p>Selecciona del catálogo o envíame una foto/referencia y el tamaño que quieres.</p>
+        </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>Te paso presupuesto y tiempo</h3>
+          <p>Confirmamos colores, detalles y fecha estimada de entrega según la complejidad.</p>
+        </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>Manos a la obra</h3>
+          <p>Te envío avances y al final coordinamos entrega o envío. ¡Listo para regalar!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo">
+      <h2 class="sectionTitle">Catálogo (ejemplos)</h2>
+
+      <div class="catalog">
+        <article class="product">
+          <div class="thumb"><span>🐻 Osito clásico</span></div>
+          <div class="pbody">
+            <h3>Osito clásico</h3>
+            <p>Suave y abrazable. Perfecto para regalo o decoración.</p>
+            <div class="priceRow">
+              <div class="price">Desde Gs. 120.000</div>
+              <a class="buy" href="#contacto">Pedir</a>
+            </div>
+            <div class="note">Tamaños: mini / mediano / grande • Colores a elección</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="thumb"><span>🦊 Zorrito kawaii</span></div>
+          <div class="pbody">
+            <h3>Zorrito kawaii</h3>
+            <p>Orejas adorables, ideal para fans del estilo tierno.</p>
+            <div class="priceRow">
+              <div class="price">Desde Gs. 150.000</div>
+              <a class="buy" href="#contacto">Pedir</a>
+            </div>
+            <div class="note">Personalizable: ojos, accesorios, bufandita</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="thumb"><span>🐱 Gatito llavero</span></div>
+          <div class="pbody">
+            <h3>Gatito llavero</h3>
+            <p>Mini amigurumi para mochila, llaves o bolso.</p>
+            <div class="priceRow">
+              <div class="price">Desde Gs. 65.000</div>
+              <a class="buy" href="#contacto">Pedir</a>
+            </div>
+            <div class="note">Ideal para souvenirs • Varios colores</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="thumb"><span>🧙 Personaje personalizado</span></div>
+          <div class="pbody">
+            <h3>Personaje personalizado</h3>
+            <p>Tu idea en crochet: anime, juegos, caricaturas o tu propio diseño.</p>
+            <div class="priceRow">
+              <div class="price">Cotización</div>
+              <a class="buy" href="#contacto">Cotizar</a>
+            </div>
+            <div class="note">Envíame referencia • Detalles a elección</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="thumb"><span>🐶 Mascota mini</span></div>
+          <div class="pbody">
+            <h3>Mascota mini</h3>
+            <p>Un recuerdo tierno de tu perrito o gatito, hecho a mano.</p>
+            <div class="priceRow">
+              <div class="price">Desde Gs. 180.000</div>
+              <a class="buy" href="#contacto">Pedir</a>
+            </div>
+            <div class="note">Colores y manchas según foto</div>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="thumb"><span>👶 Set bebé</span></div>
+          <div class="pbody">
+            <h3>Set bebé</h3>
+            <p>Amigurumi suave + accesorio (gorrito o sonajero, según disponibilidad).</p>
+            <div class="priceRow">
+              <div class="price">Desde Gs. 210.000</div>
+              <a class="buy" href="#contacto">Pedir</a>
+            </div>
+            <div class="note">Consulta materiales y opciones de seguridad</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="testimonios">
+      <h2 class="sectionTitle">Opiniones</h2>
+      <div class="grid">
+        <div class=
